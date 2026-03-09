@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoveXpress Instagram Template</title>
+  <style>
+    :root {
+      --bg: #081522;
+      --card: #0d1d2d;
+      --text: #f3f5f7;
+      --muted: #c8d0d8;
+      --accent: #1da1ff;
+      --accent-hover: #1188dd;
+      --outline: rgba(255,255,255,0.08);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #07111b 0%, #0a1624 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .wrap {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+    }
+
+    .toolbar {
+      width: min(100%, 1024px);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--outline);
+      border-radius: 20px;
+      padding: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .toolbar label,
+    .toolbar a,
+    .toolbar button {
+      font-size: 14px;
+    }
+
+    .toolbar input[type="text"],
+    .toolbar input[type="url"] {
+      background: #0b1927;
+      color: var(--text);
+      border: 1px solid var(--outline);
+      border-radius: 12px;
+      padding: 10px 12px;
+      min-width: 200px;
+      outline: none;
+    }
+
+    .toolbar input[type="file"] {
+      color: var(--muted);
+      max-width: 230px;
+    }
+
+    .toolbar button,
+    .toolbar a.button-link {
+      border: 0;
+      border-radius: 12px;
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .toolbar button:hover,
+    .toolbar a.button-link:hover {
+      background: var(--accent-hover);
+    }
+
+    .post {
+      width: min(92vw, 900px);
+      aspect-ratio: 1 / 1;
+      background: radial-gradient(circle at top left, #10253a 0%, #081522 55%, #06101a 100%);
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      padding: 56px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto;
+      gap: 28px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 120px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+    }
+
+    .title {
+      margin: 0;
+      max-width: 70%;
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 0.98;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      outline: none;
+    }
+
+    .title[contenteditable="true"]:focus,
+    .subtext[contenteditable="true"]:focus {
+      box-shadow: 0 0 0 2px rgba(29,161,255,0.45);
+      border-radius: 10px;
+    }
+
+    .photo-frame {
+      width: 100%;
+      align-self: center;
+      min-height: 320px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      text-align: center;
+      padding: 24px;
+    }
+
+    .subtext {
+      margin: 0;
+      font-size: clamp(22px, 2.7vw, 38px);
+      line-height: 1.2;
+      color: var(--muted);
+      letter-spacing: -0.03em;
+      outline: none;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      padding-top: 4px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 280px;
+      min-height: 78px;
+      padding: 18px 34px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      box-shadow: 0 14px 30px rgba(15, 110, 194, 0.25);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      background: var(--accent-hover);
+    }
+
+    .hint {
+      color: #9fb0c1;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .post { padding: 28px; gap: 18px; }
+      .logo { top: 24px; right: 24px; width: 86px; }
+      .title { max-width: 75%; }
+      .photo-frame { min-height: 240px; }
+      .cta { min-width: 220px; min-height: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="toolbar">
+      <label>Replace main image <input id="photoUpload" type="file" accept="image/*" /></label>
+      <label>Replace logo <input id="logoUpload" type="file" accept="image/*" /></label>
+      <label>Button link <input id="ctaLinkInput" type="url" value="https://movexpress.africa" /></label>
+      <label>Button text <input id="ctaTextInput" type="text" value="Get Started" /></label>
+      <button id="resetBtn" type="button">Reset</button>
+      <a class="button-link" href="#post">Jump to template</a>
+    </div>
+
+    <div class="post" id="post">
+      <img
+        id="logo"
+        class="logo"
+        src="/mnt/data/move_express_africa_logo.jpeg"
+        alt="MoveXpress logo"
+      />
+
+      <h1 class="title" id="title" contenteditable="true" spellcheck="false">Digital Freight Marketplace</h1>
+
+      <div class="photo-frame">
+        <img id="mainPhoto" alt="Editable freight image" style="display:none;" />
+        <div class="photo-placeholder" id="photoPlaceholder">Upload or replace the main campaign image here</div>
+      </div>
+
+      <p class="subtext" id="subtext" contenteditable="true" spellcheck="false">Post shipments. Find trucks. Move freight.</p>
+
+      <div class="cta-row">
+        <a id="ctaButton" class="cta" href="https://movexpress.africa" target="_blank" rel="noopener noreferrer">Get Started</a>
+      </div>
+    </div>
+
+    <div class="hint">Click into the title or subtext to edit them directly. The button is clickable and its destination can be changed above.</div>
+  </div>
+
+  <script>
+    const defaultState = {
+      title: 'Digital Freight Marketplace',
+      subtext: 'Post shipments. Find trucks. Move freight.',
+      ctaText: 'Get Started',
+      ctaHref: 'https://movexpress.africa',
+      logoSrc: '/mnt/data/move_express_africa_logo.jpeg',
+      photoSrc: ''
+    };
+
+    const titleEl = document.getElementById('title');
+    const subtextEl = document.getElementById('subtext');
+    const ctaButton = document.getElementById('ctaButton');
+    const ctaLinkInput = document.getElementById('ctaLinkInput');
+    const ctaTextInput = document.getElementById('ctaTextInput');
+    const photoUpload = document.getElementById('photoUpload');
+    const logoUpload = document.getElementById('logoUpload');
+    const mainPhoto = document.getElementById('mainPhoto');
+    const photoPlaceholder = document.getElementById('photoPlaceholder');
+    const logo = document.getElementById('logo');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function updateCTA() {
+      const safeHref = ctaLinkInput.value.trim() || '#';
+      const safeText = ctaTextInput.value.trim() || 'Get Started';
+      ctaButton.href = safeHref;
+      ctaButton.textContent = safeText;
+    }
+
+    function loadImage(file, imgEl, onShow) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        imgEl.src = e.target.result;
+        onShow();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    photoUpload.addEventListener('change', e => {
+      const file = e.target.files[0];
+      loadImage(file, mainPhoto, () => {
+        mainPhoto.style.display = 'block';
+        photoPlaceholder.style.display = 'none';
+      });
+    });
+
+    logoUpload.addEventListener('change', e => {
+      const file = e.target.files[0];
+      loadImage(file, logo, () => {});
+    });
+
+    ctaLinkInput.addEventListener('input', updateCTA);
+    ctaTextInput.addEventListener('input', updateCTA);
+
+    resetBtn.addEventListener('click', () => {
+      titleEl.textContent = defaultState.title;
+      subtextEl.textContent = defaultState.subtext;
+      ctaTextInput.value = defaultState.ctaText;
+      ctaLinkInput.value = defaultState.ctaHref;
+      ctaButton.href = defaultState.ctaHref;
+      ctaButton.textContent = defaultState.ctaText;
+      logo.src = defaultState.logoSrc;
+      mainPhoto.removeAttribute('src');
+      mainPhoto.style.display = 'none';
+      photoPlaceholder.style.display = 'grid';
+      photoUpload.value = '';
+      logoUpload.value = '';
+    });
+
+    updateCTA();
+  </script>
+</body>
+</html>
